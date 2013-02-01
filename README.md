@@ -4,9 +4,9 @@ A Leiningen plugin that renders meaningful search results.
 
 ## Install
 
-Add `[lein-grep "0.1.0-SNAPSHOT"]` to your ~/.lein/profiles.clj:
+Add `[lein-grep "0.1.0"]` to your ~/.lein/profiles.clj:
 
-    {:user {:plugins [[lein-grep "0.1.0-SNAPSHOT"]]}}
+    {:user {:plugins [[lein-grep "0.1.0"]]}}
 
 ## Usage
 
@@ -58,7 +58,7 @@ Or the default search?
 $ lein search table
 Searching over Artifact ID...
  == Showing page 1 / 9
-[tablelayout/TableLayoutPersistenceDelegate "20020517"] 
+[tablelayout/TableLayoutPersistenceDelegate "20020517"]
 [tablelayout/TableLayout "20050920"] TableLayout is a totally free layout manager designed to make
         creating user interfaces fast and easy. It can do anything
         GridBagLayout can do and much, much more. Yet it is remarkably
@@ -71,7 +71,7 @@ Searching over Artifact ID...
         creating user interfaces fast and easy. It can do anything
         GridBagLayout can do and much, much more. Yet it is remarkably
         simple and easy to use.
-[tablelayout/TableLayout "20020517"] 
+[tablelayout/TableLayout "20020517"]
 [org.openl.rules/org.openl.rules.tableeditor "5.8.0"] TableEditor JSF Component
 [org.openl.rules/org.openl.rules.tableeditor "5.8.0" :classifier "sources"] TableEditor JSF Component
 [org.openl.rules/org.openl.rules.tableeditor "5.8.0" :classifier "javadoc"] TableEditor JSF Component
@@ -99,22 +99,22 @@ Searching over Artifact ID...
 [org.openl.rules/org.openl.rules.tableeditor "5.7.0"] TableEditor JSF Component
 [org.openl.rules/org.openl.rules.tableeditor "5.7.0" :classifier "sources"] TableEditor JSF Component
 [org.openl.rules/org.openl.rules.tableeditor "5.7.0" :classifier "javadoc"] TableEditor JSF Component
-[org.connid.bundles.db/org.connid.bundles.db.table "1.2.1"] 
-[org.connid.bundles.db/org.connid.bundles.db.table "1.2.1" :classifier "sources"] 
-[org.connid.bundles.db/org.connid.bundles.db.table "1.2.1" :classifier "javadoc"] 
-[org.connid.bundles.db/org.connid.bundles.db.table "1.2"] 
-[org.connid.bundles.db/org.connid.bundles.db.table "1.2" :classifier "sources"] 
-[org.connid.bundles.db/org.connid.bundles.db.table "1.2" :classifier "javadoc"] 
-[org.connid.bundles.db/org.connid.bundles.db.table "1.1"] 
-[org.connid.bundles.db/org.connid.bundles.db.table "1.1" :classifier "sources"] 
-[org.connid.bundles.db/org.connid.bundles.db.table "1.1" :classifier "javadoc"] 
-[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.2" :packaging "war"] 
-[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.2" :classifier "sources"] 
-[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.2" :classifier "facade"] 
-[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.1" :packaging "war"] 
-[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.1" :classifier "sources"] 
-[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.1" :classifier "facade"] 
-[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.0" :packaging "war"] 
-[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.0" :classifier "sources"] 
-[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.0" :classifier "facade"] 
+[org.connid.bundles.db/org.connid.bundles.db.table "1.2.1"]
+[org.connid.bundles.db/org.connid.bundles.db.table "1.2.1" :classifier "sources"]
+[org.connid.bundles.db/org.connid.bundles.db.table "1.2.1" :classifier "javadoc"]
+[org.connid.bundles.db/org.connid.bundles.db.table "1.2"]
+[org.connid.bundles.db/org.connid.bundles.db.table "1.2" :classifier "sources"]
+[org.connid.bundles.db/org.connid.bundles.db.table "1.2" :classifier "javadoc"]
+[org.connid.bundles.db/org.connid.bundles.db.table "1.1"]
+[org.connid.bundles.db/org.connid.bundles.db.table "1.1" :classifier "sources"]
+[org.connid.bundles.db/org.connid.bundles.db.table "1.1" :classifier "javadoc"]
+[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.2" :packaging "war"]
+[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.2" :classifier "sources"]
+[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.2" :classifier "facade"]
+[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.1" :packaging "war"]
+[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.1" :classifier "sources"]
+[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.1" :classifier "facade"]
+[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.0" :packaging "war"]
+[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.0" :classifier "sources"]
+[org.codehaus.openxma/org.openxma.addons.ui.table "4.0.0" :classifier "facade"]
 ```
