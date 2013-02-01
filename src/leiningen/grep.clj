@@ -2,7 +2,7 @@
   (:require leiningen.search))
 
 (defn grep
-  "Same search syntax as the default search command but output
+  "Same search syntax/engine as the default search command but output
    is in an ascii table with one line per result."
   ([project query] (grep project query 1))
   ([project query page]
@@ -12,6 +12,10 @@
 (ns leiningen.search
   (:require [table.core :refer [table]]))
 
+; this number needs to be higher than the default to get through
+; all the duplicates caused by versions
+(def ^:private page-size (:search-page-size (:user (user/profiles)) 500))
+
 (defn- parse-result [result]
   (let [group-id (.groupId result)
         artifact-id (.artifactId result)
@@ -19,8 +23,8 @@
         ;classifier (.classifier result)
         ;packaging (.packaging result)
         name (if (= group-id artifact-id)
-               (symbol artifact-id)
-               (symbol group-id artifact-id))]
+               (keyword artifact-id)
+               (keyword group-id artifact-id))]
     {
      :artifact artifact-id
      :group group-id
@@ -28,10 +32,25 @@
      :name name
      :desc (or (.description result) "")}))
 
+(defn- filter-latest-version-per-name [results]
+  (vals (reduce
+         (fn [total {:keys [name version] :as row}]
+           (if (total name)
+             (if (pos? (compare version (:version (total name))))
+               (assoc total name row)
+               total)
+             (assoc total name row)))
+         {}
+         results)))
+
 (defn- print-results [response page]
   (when (seq response)
-    (let [results (map parse-result response)]
-      (table results))
-    (println " == Page" page "/"
-             (-> (.getTotalHitsCount response) (/ page-size) Math/ceil int))    
+    (let [results (->> (map parse-result response)
+                       filter-latest-version-per-name
+                       (map #(dissoc % :name)))]
+      (table results :sort true)
+      (println (format "Count: %s\nPage: %s/%s"
+                       (count results)
+                       page
+                       (-> (.getTotalHitsCount response) (/ page-size) Math/ceil int))))
     (println)))
