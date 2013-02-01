@@ -1,23 +1,11 @@
 (ns leiningen.grep
   (:require [leiningen.search :as search]
-            [leiningen.core.user :as user]))
+            [leiningen.core.user :as user]
+            [table.core :refer [table]]))
 
 ; this number needs to be higher than the default to get through
 ; all the duplicates caused by versions
 (def ^:private page-size (:grep-page-size (:user (user/profiles)) 500))
-
-(defn grep
-  "Same search syntax/engine as the default search command but output
-   is in an ascii table with one line per result."
-  ([project query & args]
-     (let [page (first args)]
-       (with-redefs [search/page-size (if page (Integer/parseInt page) page-size)]
-         (leiningen.search/search project query)))))
-
-;; override search fns until I can hook into them
-(ns leiningen.search
-  (:require [table.core :refer [table]]))
-
 
 (defn- parse-result [result]
   (let [group-id (.groupId result)
@@ -57,3 +45,13 @@
                        page
                        (-> (.getTotalHitsCount response) (/ page-size) Math/ceil int))))
     (println)))
+
+(defn grep
+  "Same search syntax/engine as the default search command but output
+   is in an ascii table with one line per result."
+  ([project query & args]
+     (let [page (first args)]
+       ; remove redefs if search gets an api
+       (with-redefs [search/page-size (if page (Integer/parseInt page) page-size)
+                     search/print-results print-results]
+         (leiningen.search/search project query)))))
