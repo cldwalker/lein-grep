@@ -118,3 +118,8 @@ Searching over Artifact ID...
 [org.codehaus.openxma/org.openxma.addons.ui.table "4.0.0" :classifier "sources"]
 [org.codehaus.openxma/org.openxma.addons.ui.table "4.0.0" :classifier "facade"]
 ```
+
+## TODO
+* Collapse forks by default using artifact name
+* Consider adding more attributes from ArtifactInfo results
+* Option parsing for multiple options

@@ -43,15 +43,14 @@
       (println (format "Count: %s\nPage: %s/%s"
                        (count results)
                        page
-                       (-> (.getTotalHitsCount response) (/ page-size) Math/ceil int))))
+                       (-> (count results) (/ page-size) Math/ceil int))))
     (println)))
 
 (defn grep
   "Same search syntax/engine as the default search command but output
-   is in an ascii table with one line per result."
-  ([project query & args]
-     (let [page (first args)]
-       ; remove redefs if search gets an api
-       (with-redefs [search/page-size (if page (Integer/parseInt page) page-size)
-                     search/print-results print-results]
-         (leiningen.search/search project query)))))
+is in an ascii table with one line per result."
+  ([project query & [temp-page-size]]
+     ; remove redefs if search gets an api
+     (with-redefs [search/page-size (if temp-page-size (Integer/parseInt temp-page-size) page-size)
+                   search/print-results print-results]
+       (leiningen.search/search project query))))
