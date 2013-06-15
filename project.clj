@@ -3,7 +3,7 @@
   :url "http://github.com/cldwalker/lein-grep"
   :license {:name "The MIT License"
             :url "https://en.wikipedia.org/wiki/MIT_License"}
-  :dependencies  [[org.clojure/clojure "1.5.0-RC4"]
-                  [table "0.3.2"]]
+  :dependencies  [[org.clojure/clojure "1.5.1"]
+                  [table "0.4.0"]]
   :min-lein-version "2.0.0"
   :eval-in-leiningen true)
