@@ -46,7 +46,7 @@
                        (-> (count results) (/ page-size) Math/ceil int))))
     (println)))
 
-(defn grep
+(defn ^:no-project-needed grep
   "Same search syntax/engine as the default search command but output
 is in an ascii table with one line per result."
   ([project query & [temp-page-size]]
